@@ -21,4 +21,12 @@ d2l_dumpbin <- function() {
 #' @export
 d2l <- function(path) {
   dumpbin <- d2l_dumpbin()
+
+  export <- system2(dumpbin,
+                    args = c("/EXPORTS", path),
+                    stdout = TRUE)
+
+  library_name <- tools::file_path_sans_ext(basename(path))
+  writeLines(export,
+             file.path(sirname(path), paste0(library_name, ".def")))
 }
