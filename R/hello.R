@@ -1,7 +1,7 @@
 d2l_dumpbin <- function() {
   path <- "C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/dumpbin.exe"
 
-  if (!dir.exists(path)) {
+  if (!file.exists(path)) {
     stop("Can't find 'dumpbin.exe', ",
          "download and install build tools from ",
          "https://go.microsoft.com/fwlink/?LinkId=691126",
@@ -11,6 +11,14 @@ d2l_dumpbin <- function() {
   path
 }
 
-d2l <- function() {
-  dumbin <- d2l_dumpbin()
+#' Convert DLL to LIB
+#'
+#' Converts a MSVC compiled DLL to MinGW compatible
+#' LIB format.
+#'
+#' @param path The path to the dll to convert.
+#'
+#' @export
+d2l <- function(path) {
+  dumpbin <- d2l_dumpbin()
 }
